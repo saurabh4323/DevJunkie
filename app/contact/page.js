@@ -180,8 +180,8 @@ export default function ContactPage() {
             variants={itemVariants}
             className="text-xl text-gray-300 max-w-3xl mx-auto text-center"
           >
-            Have questions or feedback? We'd love to hear from you. Fill out the
-            form below and we'll get back to you as soon as possible.
+            Have questions or feedback? We will love to hear from you. Fill out
+            the form below and we will get back to you as soon as possible.
           </motion.p>
         </motion.div>
 
