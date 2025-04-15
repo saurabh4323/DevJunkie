@@ -189,14 +189,14 @@ export default function Navbar() {
                 whileHover={{ scale: 1.03 }}
               >
                 <Link
-                  href="/contact"
+                  href="/support"
                   onClick={() => setIsMenuOpen(false)}
                   className="flex items-center gap-4 mt-4 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold shadow-lg transition-all duration-300 hover:shadow-xl"
                 >
                   <motion.span whileHover={{ rotate: 10, scale: 1.2 }}>
                     <FiMail className="text-xl" />
                   </motion.span>
-                  Contact Us
+                  Support us
                 </Link>
               </motion.div>
             </div>
