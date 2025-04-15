@@ -196,25 +196,25 @@ export default function Page() {
 
                     <div className="pl-6">
                       <span className="text-green-400">name:</span>
-                      <span className="px-1 text-yellow-300">'You'</span>
+                      <span className="px-1 text-yellow-300">You</span>
                       <span className="text-blue-400">,</span>
                     </div>
 
                     <div className="pl-6">
                       <span className="text-green-400">skills:</span>
                       <span className="px-1 text-blue-400">[</span>
-                      <span className="text-yellow-300">'HTML'</span>
+                      <span className="text-yellow-300">HTML</span>
                       <span className="text-blue-400">,</span>
-                      <span className="px-1 text-yellow-300">'CSS'</span>
+                      <span className="px-1 text-yellow-300">CSS</span>
                       <span className="text-blue-400">,</span>
-                      <span className="px-1 text-yellow-300">'JavaScript'</span>
+                      <span className="px-1 text-yellow-300">JavaScript</span>
                       <span className="text-blue-400">]</span>
                       <span className="text-blue-400">,</span>
                     </div>
 
                     <div className="pl-6">
                       <span className="text-green-400">level:</span>
-                      <span className="px-1 text-yellow-300">'Learning'</span>
+                      <span className="px-1 text-yellow-300">Learning</span>
                       <span className="text-blue-400">,</span>
                     </div>
 
@@ -224,7 +224,7 @@ export default function Page() {
                       transition={{ duration: 1.5, repeat: Infinity }}
                     >
                       <span className="text-green-400">futureLevel:</span>
-                      <span className="px-1 text-yellow-300">'Expert'</span>
+                      <span className="px-1 text-yellow-300">Expert</span>
                     </motion.div>
 
                     <div>
