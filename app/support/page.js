@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Mail,
   Code,
@@ -11,8 +11,10 @@ import {
   Check,
   Briefcase,
   MessageSquare,
+  X,
 } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function ContactPage() {
   const [formStatus, setFormStatus] = useState({
@@ -26,6 +28,8 @@ export default function ContactPage() {
     budget: "",
     details: "",
   });
+
+  const [showCoffeeModal, setShowCoffeeModal] = useState(false);
 
   const handleChange = (e) => {
     setFormData({
@@ -75,24 +79,47 @@ export default function ContactPage() {
     },
   };
 
+  const modalVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "spring",
+        damping: 25,
+        stiffness: 500,
+      },
+    },
+    exit: {
+      opacity: 0,
+      scale: 0.8,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
   const contactOptions = [
     {
       title: "Quick Consultation",
       amount: "$4.99",
       description: "One-hour consultation to discuss your project needs",
       icon: <MessageSquare className="h-8 w-8 text-white" />,
+      onClick: () => {},
     },
     {
-      title: "Buy Me a Coffee",
-      amount: "Custom",
+      title: "Buy Us a Coffee",
+      amount: "Any",
       description: "Support my work with a small token of appreciation",
       icon: <Coffee className="h-8 w-8 text-white" />,
+      onClick: () => setShowCoffeeModal(true),
     },
     {
       title: "Hire for Project",
       amount: "Custom",
       description: "Let's collaborate on your next big idea",
       icon: <Briefcase className="h-8 w-8 text-white" />,
+      onClick: () => {},
     },
   ];
 
@@ -173,7 +200,8 @@ export default function ContactPage() {
             <motion.div
               key={index}
               variants={itemVariants}
-              className="bg-gray-800/60 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 flex flex-col items-center text-center"
+              className="bg-gray-800/60 backdrop-blur-sm border border-gray-700 rounded-xl p-6 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 flex flex-col items-center text-center cursor-pointer"
+              onClick={option.onClick}
             >
               <div className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-4 mb-4">
                 {option.icon}
@@ -357,6 +385,74 @@ export default function ContactPage() {
           </motion.div>
         </div>
       </div>
+
+      {/* Coffee Support Modal */}
+      <AnimatePresence>
+        {showCoffeeModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+              onClick={() => setShowCoffeeModal(false)}
+            />
+
+            {/* Modal Content */}
+            <motion.div
+              variants={modalVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="relative bg-gray-800/90 backdrop-blur-md border border-gray-700 rounded-xl p-8 w-full max-w-md shadow-2xl shadow-purple-500/20"
+            >
+              {/* Close button */}
+              <button
+                onClick={() => setShowCoffeeModal(false)}
+                className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+
+              <div className="flex flex-col items-center">
+                <div className="rounded-full bg-gradient-to-r from-blue-500 to-purple-500 p-4 mb-4">
+                  <Coffee className="h-8 w-8 text-white" />
+                </div>
+
+                <h2 className="text-2xl font-bold text-white mb-2">
+                  Buy us a Coffee
+                </h2>
+                <p className="text-gray-300 text-center mb-6">
+                  Your support helps us to continue creating amazing content and
+                  tools!
+                </p>
+
+                <div className="bg-gradient-to-r from-blue-500/20 to-purple-500/20 p-1 rounded-lg mb-6">
+                  <div className="bg-gray-900 rounded-md p-4 flex flex-col items-center">
+                    <img
+                      src="/image.png"
+                      alt="UPI QR Code"
+                      className="w-48 h-48 mb-4 rounded-md"
+                    />
+
+                    <span className="text-gray-300 text-sm mb-1">
+                      Scan the QR code or
+                    </span>
+
+                    <Link
+                      href="upi://pay?pa=8810873052@ptsbi&pn=SaurabhSingh&cu=INR"
+                      className="text-blue-500 underline"
+                    >
+                      Pay via UPI
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
