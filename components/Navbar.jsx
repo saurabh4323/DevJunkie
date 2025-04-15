@@ -15,8 +15,8 @@ import {
 // Navigation links
 const navLinks = [
   { href: "/projects", label: "Projects", icon: <FiLayers /> },
-  { href: "/tutorials", label: "Tutorials", icon: <FiBook /> },
-  { href: "/resources", label: "Resources", icon: <FiArchive /> },
+  { href: "/reelproject", label: "Reel Project", icon: <FiBook /> },
+  // { href: "/support", label: "support", icon: <FiArchive /> },
   { href: "/community", label: "Community", icon: <FiUsers /> },
 ];
 
@@ -124,10 +124,10 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
             >
               <Link
-                href="/contact"
+                href="/support"
                 className="ml-6 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white px-8 py-2.5 rounded-full font-semibold shadow-lg transition-all duration-300"
               >
-                Contact Us
+                support Us
               </Link>
             </motion.div>
           </div>
