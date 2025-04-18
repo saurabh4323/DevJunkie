@@ -124,10 +124,10 @@ export default function ContactPage() {
   ];
 
   return (
-    <div className="relative min-h-screen bg-gray-900 overflow-hidden">
+    <div className="relative min-h-screen  overflow-hidden">
       {/* Animated background elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-900/20 to-purple-900/20"></div>
+        <div className="absolute top-0 left-0 w-full h-full "></div>
 
         {/* Animated circles */}
         <motion.div

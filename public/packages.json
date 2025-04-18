@@ -1,0 +1,101 @@
+{
+  "packages": [
+    {
+      "id": 1,
+      "name": "devjunkie-ui",
+      "description": "A modern UI component library for React and Next.js applications with 50+ customizable components",
+      "installCommand": "npm i devjunkie-ui",
+      "category": "UI Components",
+      "image": "/api/placeholder/120/120",
+      "stars": 254,
+      "downloads": "12.5k",
+      "tags": ["react", "nextjs", "ui", "components"]
+    },
+    {
+      "id": 2,
+      "name": "devjunkie-hooks",
+      "description": "Collection of custom React hooks for complex state management and side effects",
+      "installCommand": "npm i devjunkie-hooks",
+      "category": "Hooks",
+      "image": "/api/placeholder/120/120",
+      "stars": 182,
+      "downloads": "8.3k",
+      "tags": ["react", "hooks", "state-management"]
+    },
+    {
+      "id": 3,
+      "name": "devjunkie-forms",
+      "description": "Form validation and submission utilities for React applications with zero dependencies",
+      "installCommand": "npm i devjunkie-forms",
+      "category": "Forms",
+      "image": "/api/placeholder/120/120",
+      "stars": 143,
+      "downloads": "6.2k",
+      "tags": ["react", "forms", "validation"]
+    },
+    {
+      "id": 4,
+      "name": "devjunkie-animation",
+      "description": "Lightweight animation library for creating smooth transitions in React applications",
+      "installCommand": "npm i devjunkie-animation",
+      "category": "Animation",
+      "image": "/api/placeholder/120/120",
+      "stars": 127,
+      "downloads": "5.8k",
+      "tags": ["react", "animation", "transitions"]
+    },
+    {
+      "id": 5,
+      "name": "devjunkie-utils",
+      "description": "Utility functions for common frontend development tasks and optimizations",
+      "installCommand": "npm i devjunkie-utils",
+      "category": "Utilities",
+      "image": "/api/placeholder/120/120",
+      "stars": 116,
+      "downloads": "7.1k",
+      "tags": ["javascript", "utilities", "helpers"]
+    },
+    {
+      "id": 6,
+      "name": "devjunkie-themes",
+      "description": "Theming solution for React applications with dark mode support and customizable palettes",
+      "installCommand": "npm i devjunkie-themes",
+      "category": "Theming",
+      "image": "/api/placeholder/120/120",
+      "stars": 98,
+      "downloads": "4.3k",
+      "tags": ["react", "themes", "dark-mode"]
+    },
+    {
+      "id": 7,
+      "name": "devjunkie-icons",
+      "description": "Optimized SVG icon pack for web applications with React component wrappers",
+      "installCommand": "npm i devjunkie-icons",
+      "category": "UI Components",
+      "image": "/api/placeholder/120/120",
+      "stars": 87,
+      "downloads": "3.9k",
+      "tags": ["icons", "svg", "react"]
+    },
+    {
+      "id": 8,
+      "name": "devjunkie-data",
+      "description": "Data fetching and caching utilities for Next.js and React applications",
+      "installCommand": "npm i devjunkie-data",
+      "category": "Data Fetching",
+      "image": "/api/placeholder/120/120",
+      "stars": 76,
+      "downloads": "3.2k",
+      "tags": ["data", "fetch", "cache", "nextjs"]
+    }
+  ],
+  "categories": [
+    "UI Components",
+    "Hooks",
+    "Forms",
+    "Animation",
+    "Utilities",
+    "Theming",
+    "Data Fetching"
+  ]
+}

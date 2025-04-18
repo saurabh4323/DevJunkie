@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Snippet Copier</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            padding: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+        
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+        
+        button {
+            background-color: #4a6fa5;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            min-height: 80px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background-color: #345c8d;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        button .title {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        button .description {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 100;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>CSS Snippet Library</h1>
+        <div class="button-grid" id="buttonGrid"></div>
+    </div>
+    
+    <div class="notification" id="notification">
+        CSS copied to clipboard!
+    </div>
+    
+    <script>
+        // CSS snippets library
+        const cssSnippets = [
+            {
+                title: "Flexbox Center",
+                description: "Center items horizontally and vertically",
+                code: `.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}`
+            },
+            {
+                title: "Card Shadow",
+                description: "Elegant box shadow for cards",
+                code: `.card-shadow {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+.card-shadow:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}`
+            },
+            {
+                title: "Text Gradient",
+                description: "Colorful gradient text",
+                code: `.gradient-text {
+  background: linear-gradient(90deg, #f39c12, #e74c3c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}`
+            },
+            {
+                title: "Border Animation",
+                description: "Animated border effect",
+                code: `.border-animation {
+  position: relative;
+  overflow: hidden;
+}
+.border-animation::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #3498db;
+  transition: width 0.3s ease;
+}
+.border-animation:hover::after {
+  width: 100%;
+}`
+            },
+            {
+                title: "Glass Effect",
+                description: "Modern glassmorphism style",
+                code: `.glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}`
+            },
+            {
+                title: "Grid Layout",
+                description: "Responsive grid system",
+                code: `.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}`
+            },
+            {
+                title: "Button Hover",
+                description: "Clean button hover effect",
+                code: `.hover-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+}
+.hover-button:hover {
+  background-color: #2980b9;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}`
+            },
+            {
+                title: "Dark Mode",
+                description: "Simple dark mode toggle",
+                code: `:root {
+  --bg-color: #fff;
+  --text-color: #333;
+}
+.dark-mode {
+  --bg-color: #222;
+  --text-color: #f4f4f4;
+}
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}`
+            },
+            {
+                title: "Image Overlay",
+                description: "Text overlay on image hover",
+                code: `.image-container {
+  position: relative;
+  overflow: hidden;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.image-container:hover .overlay {
+  opacity: 1;
+}`
+            },
+            {
+                title: "Text Ellipsis",
+                description: "Truncate text with ellipsis",
+                code: `.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}`
+            },
+            {
+                title: "Sticky Header",
+                description: "Header that sticks to the top",
+                code: `.sticky-header {
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}`
+            },
+            {
+                title: "Custom Scrollbar",
+                description: "Styled browser scrollbar",
+                code: `::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #888; 
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}`
+            },
+            {
+                title: "Neon Text",
+                description: "Glowing neon text effect",
+                code: `.neon-text {
+  color: #fff;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #0073e6, 0 0 20px #0073e6;
+}`
+            },
+            {
+                title: "Loading Spinner",
+                description: "Simple CSS spinner animation",
+                code: `.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #09f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}`
+            },
+            {
+                title: "Responsive Typography",
+                description: "Fluid font sizing",
+                code: `html {
+  font-size: 16px;
+}
+@media screen and (min-width: 320px) {
+  html {
+    font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  }
+}
+@media screen and (min-width: 1000px) {
+  html {
+    font-size: 22px;
+  }
+}`
+            },
+            {
+                title: "Image Filter",
+                description: "Instagram-like filter effects",
+                code: `.vintage-filter {
+  filter: sepia(0.5) contrast(1.2) brightness(1.1) saturate(1.2);
+}
+.grayscale-filter {
+  filter: grayscale(1);
+}
+.blur-filter {
+  filter: blur(3px);
+}`
+            },
+            {
+                title: "Triangle Shape",
+                description: "CSS triangle using borders",
+                code: `.triangle {
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid #3498db;
+}`
+            },
+            {
+                title: "Print Styles",
+                description: "CSS for better printing",
+                code: `@media print {
+  body {
+    margin: 0;
+    padding: 2cm;
+    font-size: 12pt;
+    line-height: 1.5;
+  }
+  a::after {
+    content: " (" attr(href) ")";
+    font-size: 90%;
+    color: #555;
+  }
+  nav, button, .no-print {
+    display: none;
+  }
+}`
+            },
+            {
+                title: "CSS Reset",
+                description: "Basic CSS reset",
+                code: `* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-size: 16px;
+  line-height: 1.5;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}`
+            },
+            {
+                title: "Tooltip",
+                description: "Simple CSS tooltip",
+                code: `.tooltip {
+  position: relative;
+  display: inline-block;
+}
+.tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  white-space: nowrap;
+}
+.tooltip:hover::after {
+  opacity: 1;
+}`
+            },
+            {
+                title: "Custom Checkbox",
+                description: "Styled checkbox input",
+                code: `.custom-checkbox {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 4px;
+}
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.custom-checkbox .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}`
+            },
+            {
+                title: "Text Selection",
+                description: "Custom text highlight color",
+                code: `::selection {
+  background: #ffb7b7;
+  color: #333;
+}
+::-moz-selection {
+  background: #ffb7b7;
+  color: #333;
+}`
+            },
+            {
+                title: "3D Button",
+                description: "Button with 3D press effect",
+                code: `.button-3d {
+  position: relative;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 5px 0 #388E3C;
+  transition: all 0.1s;
+}
+.button-3d:active {
+  box-shadow: 0 2px 0 #388E3C;
+  transform: translateY(3px);
+}`
+            },
+            {
+                title: "Hamburger Menu Icon",
+                description: "Animated hamburger to X icon",
+                code: `.hamburger {
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.hamburger span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: #333;
+  border-radius: 3px;
+  opacity: 1;
+  transform: rotate(0deg);
+  transition: .3s ease-in-out;
+}
+.hamburger span:nth-child(1) {
+  top: 0px;
+}
+.hamburger span:nth-child(2), .hamburger span:nth-child(3) {
+  top: 9px;
+}
+.hamburger span:nth-child(4) {
+  top: 18px;
+}
+.hamburger.open span:nth-child(1) {
+  top: 9px;
+  width: 0%;
+  left: 50%;
+}
+.hamburger.open span:nth-child(2) {
+  transform: rotate(45deg);
+}
+.hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+.hamburger.open span:nth-child(4) {
+  top: 9px;
+  width: 0%;
+  left: 50%;
+}`
+            },
+            {
+                title: "Masonry Layout",
+                description: "Pinterest-style masonry grid",
+                code: `.masonry-grid {
+  column-count: 3;
+  column-gap: 20px;
+}
+@media (max-width: 768px) {
+  .masonry-grid {
+    column-count: 2;
+  }
+}
+@media (max-width: 480px) {
+  .masonry-grid {
+    column-count: 1;
+  }
+}
+.masonry-item {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 20px;
+  break-inside: avoid;
+}`
+            }
+        ];
+
+        // Generate buttons for each CSS snippet
+        const buttonGrid = document.getElementById('buttonGrid');
+        const notification = document.getElementById('notification');
+
+        // Create 25 buttons
+        for (let i = 0; i < 25; i++) {
+            // Use modulo to cycle through available snippets if we have less than 25
+            const snippet = cssSnippets[i % cssSnippets.length];
+            
+            // Create button
+            const button = document.createElement('button');
+            
+            // Create title and description elements
+            const titleElem = document.createElement('div');
+            titleElem.className = 'title';
+            titleElem.textContent = snippet.title;
+            
+            const descElem = document.createElement('div');
+            descElem.className = 'description';
+            descElem.textContent = snippet.description;
+            
+            // Add elements to button
+            button.appendChild(titleElem);
+            button.appendChild(descElem);
+            
+            // Add click event
+            button.addEventListener('click', () => {
+                copyToClipboard(snippet.code, snippet.title);
+            });
+            
+            // Add button to grid
+            buttonGrid.appendChild(button);
+        }
+
+        // Function to copy text to clipboard
+        function copyToClipboard(text, title) {
+            navigator.clipboard.writeText(text)
+                .then(() => {
+                    // Show notification
+                    notification.textContent = `"${title}" copied to clipboard!`;
+                    notification.style.display = 'block';
+                    
+                    // Hide notification after 2 seconds
+                    setTimeout(() => {
+                        notification.style.display = 'none';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Could not copy text: ', err);
+                    alert('Failed to copy to clipboard. Please try again.');
+                });
+        }
+    </script>
+</body>
+</html>
