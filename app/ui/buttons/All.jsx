@@ -19,7 +19,7 @@ import {
   SpotlightButton,
   ScaleIconButton,
   SlideFillButton,
-} from "devjunkie";
+} from "devjunkie-buttons";
 
 export default function ButtonsShowcase() {
   const [activeButton, setActiveButton] = useState(null);
@@ -48,7 +48,7 @@ export default function ButtonsShowcase() {
   ];
 
   const copyImportToClipboard = (buttonName) => {
-    const textToCopy = `import { ${buttonName} } from "devjunkie";`;
+    const textToCopy = `import { ${buttonName} } from "devjunkie-buttons";`;
     navigator.clipboard.writeText(textToCopy);
     setCopiedImport(true);
     setTimeout(() => setCopiedImport(false), 2000);
@@ -62,7 +62,7 @@ export default function ButtonsShowcase() {
   };
 
   const copyInstallToClipboard = () => {
-    navigator.clipboard.writeText("npm install devjunkie");
+    navigator.clipboard.writeText("npm install devjunkie-buttons");
     setCopiedInstall(true);
     setTimeout(() => setCopiedInstall(false), 2000);
   };
@@ -118,7 +118,7 @@ export default function ButtonsShowcase() {
               </div>
               <div className="bg-gray-900 p-5 rounded-lg border border-blue-500/20">
                 <code className="text-green-400 font-mono">
-                  import &#123; {activeButton} &#125; from "devjunkie";
+                  import &#123; {activeButton} &#125; from "devjunkie-buttons";
                 </code>
                 <button
                   onClick={() => copyImportToClipboard(activeButton)}
@@ -283,7 +283,7 @@ export default function ButtonsShowcase() {
             </div>
             <div className="bg-gray-900 p-5 rounded-lg border border-yellow-500/30 mb-8">
               <code className="text-yellow-400 font-mono">
-                npm install devjunkie
+                npm install devjunkie-buttons
               </code>
               <button
                 onClick={copyInstallToClipboard}

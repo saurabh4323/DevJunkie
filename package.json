@@ -11,6 +11,7 @@
   "dependencies": {
     "axios": "^1.8.4",
     "devjunkie": "^1.1.1",
+    "devjunkie-buttons": "^1.3.2",
     "framer-motion": "^12.7.3",
     "lucide-react": "^0.488.0",
     "my": "file:",

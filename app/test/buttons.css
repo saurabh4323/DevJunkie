@@ -1,0 +1,697 @@
+/* src/components/buttons.css */
+/* Common button styles */
+button {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+button:focus {
+  outline: none;
+}
+
+.button-text {
+  position: relative;
+  z-index: 10;
+}
+
+/* Button 1: Gradient Button */
+.gradient-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(135deg, #6366f1, #4f46e5, #4338ca);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+  transform: translateY(0);
+}
+
+.gradient-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
+}
+
+.gradient-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.gradient-button .shimmer-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: translateX(-100%) skewX(-15deg);
+  animation: shimmer 3s infinite;
+}
+
+/* Button 2: Outlined Button */
+.outlined-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: #3b82f6;
+  background: transparent;
+  border: 2px solid #3b82f6;
+  overflow: hidden;
+}
+
+.outlined-button .fill-effect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #3b82f6;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  z-index: 0;
+}
+
+.outlined-button:hover {
+  color: white;
+}
+
+.outlined-button:hover .fill-effect {
+  transform: translateY(0);
+}
+
+/* Button 3: Neon Button */
+.neon-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  color: #10b981;
+  background: black;
+  border: 2px solid #10b981;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+
+.neon-button:hover {
+  color: #34d399;
+  border-color: #34d399;
+  box-shadow: 0 0 18px rgba(16, 185, 129, 0.5);
+}
+
+.neon-button .pulse-effect {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 8px;
+  border: 2px solid #10b981;
+  opacity: 0.7;
+  animation: pulse 2s infinite;
+}
+
+/* Button 4: Pill Button */
+.pill-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  color: white;
+  background: linear-gradient(135deg, #ec4899, #db2777);
+  box-shadow: 0 4px 12px rgba(219, 39, 119, 0.25);
+}
+
+.pill-button:hover {
+  background: linear-gradient(135deg, #f472b6, #be185d);
+  box-shadow: 0 6px 16px rgba(219, 39, 119, 0.4);
+  transform: translateY(-2px);
+}
+
+.pill-button .button-icon {
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+/* Button 5: Glass Button */
+.glass-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.glass-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.glass-button .glass-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glass-button:hover .glass-highlight {
+  opacity: 1;
+}
+
+/* Button 6: 3D Button */
+.three-d-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 8px;
+  color: white;
+  background-color: #3b82f6;
+  border-bottom: 4px solid #1d4ed8;
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.3);
+}
+
+.three-d-button:hover {
+  background-color: #60a5fa;
+  transform: translateY(2px);
+  border-bottom-width: 2px;
+}
+
+.three-d-button:active {
+  background-color: #2563eb;
+  transform: translateY(4px);
+  border-bottom-width: 0;
+}
+
+.three-d-button .button-highlight {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), transparent);
+  border-radius: 8px 8px 0 0;
+}
+
+/* Button 7: Toggle Button */
+.toggle-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  padding: 0;
+  background-color: #e5e7eb;
+  color: #6b7280;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.toggle-button:hover {
+  background-color: #d1d5db;
+}
+
+.toggle-button.active {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.toggle-button .icon-container {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.toggle-button .active-icon,
+.toggle-button .inactive-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-button .show {
+  opacity: 1;
+}
+
+.toggle-button .hide {
+  opacity: 0;
+}
+
+/* Button 8: Arrow Button */
+.arrow-button {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(135deg, #4f46e5, #4338ca);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+}
+
+.arrow-button:hover {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  box-shadow: 0 6px 16px rgba(79, 70, 229, 0.4);
+}
+
+.arrow-button .button-text {
+  transition: transform 0.3s ease;
+}
+
+.arrow-button:hover .button-text {
+  transform: translateX(-4px);
+}
+
+.arrow-button .arrow-icon {
+  margin-left: 8px;
+  transition: all 0.3s ease;
+}
+
+.arrow-button:hover .arrow-icon {
+  transform: translateX(4px) scale(1.1);
+}
+
+.arrow-button .bottom-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  opacity: 0.2;
+  transition: width 0.3s ease;
+}
+
+.arrow-button:hover .bottom-line {
+  width: 100%;
+}
+
+/* Button 9: Pulse Button */
+.pulse-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  box-shadow: 0 4px 12px rgba(245, 158, 11, 0.25);
+}
+
+.pulse-button:hover {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+}
+
+.pulse-button .pulse-slow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  opacity: 0.6;
+  animation: pulse-slow 3s infinite;
+  z-index: 1;
+}
+
+.pulse-button .pulse-fast {
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  opacity: 0.3;
+  filter: blur(4px);
+  animation: pulse 2s infinite;
+  z-index: 0;
+}
+
+/* Button 10: Minimal Button */
+.minimal-button {
+  padding: 12px 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4b5563;
+  background: transparent;
+}
+
+.minimal-button:hover {
+  color: #111827;
+}
+
+.minimal-button .line-effect {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #111827;
+  transition: width 0.3s ease;
+}
+
+.minimal-button:hover .line-effect {
+  width: 100%;
+}
+
+.minimal-button .dot-effect {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #111827;
+  opacity: 0;
+  transition: opacity 0.3s ease 0.3s;
+}
+
+.minimal-button:hover .dot-effect {
+  opacity: 1;
+}
+
+/* Button 11: Floating Action Button */
+.floating-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  color: white;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.35);
+}
+
+.floating-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(59, 130, 246, 0.5);
+}
+
+.floating-button:active {
+  transform: scale(0.95);
+}
+
+/* Button 12: Splash Button */
+.splash-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  background-color: #14b8a6;
+  overflow: hidden;
+}
+
+.splash-button:hover {
+  background-color: #0d9488;
+}
+
+.splash-button .ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 255, 255, 0.3);
+  width: 0;
+  height: 0;
+  animation: ripple 0.6s linear;
+}
+
+/* Button 13: Underline Reveal Button */
+.underline-button {
+  padding: 12px 4px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4f46e5;
+  background: transparent;
+}
+
+.underline-button:hover {
+  color: #4338ca;
+}
+
+.underline-button .line-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4f46e5;
+  transition: width 0.3s ease;
+}
+
+.underline-button:hover .line-left {
+  width: 100%;
+}
+
+.underline-button .line-right {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4f46e5;
+  transition: width 0.3s ease 0.3s;
+}
+
+.underline-button:hover .line-right {
+  width: 100%;
+}
+
+/* Button 14: Border Slide Button */
+.border-slide-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4b5563;
+  background: transparent;
+}
+
+.border-slide-button:hover {
+  color: #4f46e5;
+}
+
+.border-slide-button .border-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4f46e5;
+  transition: width 0.3s ease;
+}
+
+.border-slide-button:hover .border-top {
+  width: 100%;
+}
+
+.border-slide-button .border-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2px;
+  height: 0;
+  background-color: #4f46e5;
+  transition: height 0.3s ease 0.1s;
+}
+
+.border-slide-button:hover .border-right {
+  height: 100%;
+}
+
+.border-slide-button .border-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0;
+  height: 2px;
+  background-color: #4f46e5;
+  transition: width 0.3s ease 0.2s;
+}
+
+.border-slide-button:hover .border-bottom {
+  width: 100%;
+}
+
+.border-slide-button .border-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background-color: #4f46e5;
+  transition: height 0.3s ease 0.3s;
+}
+
+.border-slide-button:hover .border-left {
+  height: 100%;
+}
+
+/* Button 15: Spotlight Button */
+.spotlight-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  background-color: #1f2937;
+}
+
+.spotlight-button:hover {
+  background-color: #111827;
+}
+
+.spotlight-button .spotlight {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: all 0.15s ease;
+}
+
+/* Button 16: Scale Icon Button */
+.scale-icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: white;
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  box-shadow: 0 4px 12px rgba(6, 182, 212, 0.25);
+}
+
+.scale-icon-button:hover {
+  background: linear-gradient(135deg, #22d3ee, #06b6d4);
+  box-shadow: 0 6px 16px rgba(6, 182, 212, 0.4);
+}
+
+.scale-icon-button .button-text {
+  transition: transform 0.3s ease;
+}
+
+.scale-icon-button:hover .button-text {
+  transform: scale(0.95);
+}
+
+.scale-icon-button .icon {
+  transition: all 0.5s ease;
+}
+
+.scale-icon-button:hover .icon {
+  transform: scale(1.25) rotate(12deg);
+}
+
+/* Button 17: Slide Fill Button */
+.slide-fill-button {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  color: #10b981;
+  background: transparent;
+  border: 2px solid #10b981;
+  overflow: hidden;
+}
+
+.slide-fill-button:hover {
+  color: white;
+}
+
+.slide-fill-button .fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #10b981;
+  transform: translateX(-101%);
+  transition: transform 0.3s ease;
+  z-index: -1;
+}
+
+.slide-fill-button:hover .fill {
+  transform: translateX(0);
+}
+
+/* Animations */
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(-15deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 0;
+    height: 0;
+    opacity: 0.6;
+  }
+  100% {
+    width: 500px;
+    height: 500px;
+    opacity: 0;
+  }
+}
